@@ -4,6 +4,13 @@ Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://artur.users.cs.helsinki.fi/GTK/)
 * [Linkki dokumentaatiooni](https://github.com/pundis/GTK/blob/master/doc/dokumentaatio.pdf)
+* [Linkki relaatiotietokantakaavioon](https://github.com/pundis/GTK/blob/master/doc/tsoha relaatiotietokantakaavio.pdf)
+
+kirjautumissivu: http://artur.users.cs.helsinki.fi/GTK/login
+ratojen listaussivu: http://artur.users.cs.helsinki.fi/GTK/courses
+
+huom. En kokenut vielä tässä vaiheessa järkeväksi tehdä enempää näkymiä sillä listaussivut ovat vahvasti riippuvaisia tietokantatason ratkaisuista joista osaan en ollut tehnyt vielä lopullsita päätöstä.
+
 
 ## Työn aihe
 

@@ -14,5 +14,9 @@
     public static function courses(){
     	View::make('courses.html');
     }
+
+    public static function login(){
+      View::make('login.html');
+    }
     
   }

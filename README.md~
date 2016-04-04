@@ -2,9 +2,14 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://artur.users.cs.helsinki.fi/GTK/)
+* [Linkki dokumentaatiooni](https://github.com/pundis/GTK/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Kuvaus:
+
+Golftietokannan tarkoitus on tuoda käyttäjälle keskitetty paikka johon taltioida golf-kierroksia jossa selaaminen tapahtuu myös vaivattomasti.
+Sivusto tarjoaa kirjautumistoiminnon, jonka jälkeen kierroksia voidaan lisätä pelatulle kentälle.
+Mikäli tietokannasta ei vielä löydy pelattua golf-kenttää, voi käyttäjä lisätä sen vaivatta tietokantaan ja syöttää tulos pelatulla kentällä.
+Kun tuloksia on syötetty tarpeeksi voi käyttäjä seurata omaa kehitystään tästä keskitetystä kierroskannasta.

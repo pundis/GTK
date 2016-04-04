@@ -12,3 +12,7 @@
   	HelloWorldController::courses();
   });
 
+  $routes->get('/login', function() {
+    HelloWorldController::login();
+  });
+
