@@ -8,11 +8,10 @@
     }
 
     public static function sandbox(){
-      View::make('helloworld.html');
-    }
-
-    public static function courses(){
-    	View::make('courses.html');
+      $forest = Course::find(1);
+      $courses = Course::all();
+      Kint::dump($forest);
+      Kint::dump($courses);
     }
 
     public static function login(){
