@@ -4,6 +4,10 @@
     HelloWorldController::index();
   });
 
+  $routes->post('/courses/:id/destroy', function($id){
+    CourseController::destroy($id);
+  });
+
   $routes->get('/courses', function() {
   	CourseController::index();
   });
@@ -16,15 +20,26 @@
     CourseController::store();
   });
 
-  $routes->get('/login', function() {
-    HelloWorldController::login();
-  });
-
   $routes->get('/courses/:id', function($id){
     CourseController::show($id);
+  });
+
+  $routes->get('/courses/:id/edit', function($id){
+    CourseController::edit($id);
+  });
+
+  $routes->post('/courses/:id/edit', function($id){
+    CourseController::update($id);
   });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
 
+  $routes->get('/login', function() {
+    UserController::login();
+  });
+
+  $routes->post('/login', function() {
+    UserController::handle_login();
+  });

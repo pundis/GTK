@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Lisää kenttä</h1>
+  <h1>Muokkaa kenttää</h1>
 
   {% if errors %}
   <div class="alert alert-danger">
@@ -13,23 +13,24 @@
   {% endif %}
 
 
-  <form method="post" action="{{base_path}}/courses">
+  <form method="post" action="{{base_path}}/courses/{{attributes.id}}/edit">
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" name="name" class="form-control">
+      <input type="text" name="name" class="form-control" value = "{{attributes.name}}">
     </div>
 
     <div class="form-group">
       <label>Kaupunki</label>
-      <input type="text" name="city" class="form-control">
+      <input type="text" name="city" class="form-control" value ="{{attributes.city}}">
     </div>
 
     <div class="form-group">
       <label>Reikiä</label>
-      <input type="text" name="holes" class="form-control">
+      <input name="holes" class="form-control" value="{{attributes.holes}}" readonly></input>
     </div>
 
-    <div class="form-group">
+
+ <div class="form-group">
       <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
   </form>

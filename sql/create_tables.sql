@@ -21,7 +21,7 @@ CREATE TABLE Hole(
 
 CREATE TABLE PlayedCourse(
   id SERIAL PRIMARY KEY,
-  golfer_id INTEGER REFERENCES Golfer(id),
+  golfer_id SERIAL REFERENCES Golfer(id),
   course_id INTEGER REFERENCES Course(id),
   played Date,
   result INTEGER
@@ -31,6 +31,6 @@ CREATE TABLE PlayedHole(
   id SERIAL PRIMARY KEY,
   course_id INTEGER REFERENCES Course(id),
   playedcourse_id INTEGER REFERENCES PlayedCourse(id),
-  golfer_id INTEGER REFERENCES Golfer(id),
+  golfer_id SERIAL REFERENCES Golfer(id),
   result INTEGER 
 );

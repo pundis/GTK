@@ -9,13 +9,14 @@
     }
 
     public static function findByCourseId($id){
-  		$query = DB::connection()->prepare('SELECT * FROM Hole WHERE course_id = :id');
-        $query->execute();
-        $rows = $query->fetchAll();
-        $holes = array();
+  		$query = DB::connection()->prepare('SELECT * FROM Hole WHERE course_id = :id ORDER BY holenumber');
+      $query->execute(array('id' => $id));
+      $rows = $query->fetchAll();
+
+      $holes = array();
 
     	foreach($rows as $row){
-      	  $holes[] = new Course(array(
+      	  $holes[] = new Hole(array(
           'id' => $row['id'],
           'course_id' => $row['course_id'],
           'holenumber' => $row['holenumber'],
@@ -23,6 +24,6 @@
       	  ));
     	}
 
-    	return $courses;
+    	return $holes;
   	}
   }

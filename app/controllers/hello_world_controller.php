@@ -8,10 +8,14 @@
     }
 
     public static function sandbox(){
-      $forest = Course::find(1);
-      $courses = Course::all();
-      Kint::dump($forest);
-      Kint::dump($courses);
+      $course = new Course(array(
+        'name' => 'd',
+        'city' => 'e',
+        'holes' => 'kaka'
+        ));
+      $errors = $course->errors();
+
+      Kint::dump($errors);
     }
 
     public static function login(){

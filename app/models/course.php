@@ -6,6 +6,7 @@
 
     public function __construct($attributes){
       parent::__construct($attributes);
+      $this->validators = array('validateName', 'validateCity', 'validateHoles');
     }
 
 
@@ -35,21 +36,64 @@
       $this->id = $row['id'];
     }
 
-  public static function all(){
-    $query = DB::connection()->prepare('SELECT * FROM Course');
-    $query->execute();
-    $rows = $query->fetchAll();
-    $courses = array();
+    public function update(){
+      $query =  DB::connection()->prepare('UPDATE Course Set (name, city, holes) = (:name, :city, :holes) WHERE id = :id');
+      $query->execute(array('id' => $this->id, 'name' => $this->name, 'city' => $this->city, 'holes' => $this->holes));
+      $row = $query->fetch();
+    }
 
-    foreach($rows as $row){
-      $courses[] = new Course(array(
-        'id' => $row['id'],
-        'name' => $row['name'],
-        'holes' => $row['holes'],
-        'city' => $row['city']
-      ));
+    public function destroy(){
+      $query = DB::connection()->prepare('DELETE From Course Where id = :id');
+      $query->execute(array('id' => $this->id));
+      $row = $query->fetch();
+    }
+
+    public static function all(){
+      $query = DB::connection()->prepare('SELECT * FROM Course');
+      $query->execute();
+      $rows = $query->fetchAll();
+      $courses = array();
+
+      foreach($rows as $row){
+        $courses[] = new Course(array(
+          'id' => $row['id'],
+          'name' => $row['name'],
+          'holes' => $row['holes'],
+          'city' => $row['city']
+        ));
     }
 
     return $courses;
+  }
+
+  public function validateCity() {
+    $error = array();
+    if (strlen($this->city) < 3) {
+      $error = array("Kaupungin pituus oltava vähintään 3 kirjainta");
+    }
+   return $error;
+  }
+
+  public function validateName() {
+    $error = array();
+    if (strlen($this->name) < 3) {
+      $error = array("Nimen pituus oltava vähintään 3 kirjainta");
+    }
+    return $error;
+  }
+
+  public function validateHoles() {
+    $error = array();
+    if (!ctype_digit(strval($this->holes))) {
+      $error[] = "Reikiä oltava numero";
+        return $error;  
+    }
+    if ($this->holes == 9 || $this->holes == 18) {
+      return $error;
+    }
+
+    $error[] = "Reikiä oltava 9 tai 18";
+    
+    return $error;
   }
 }
