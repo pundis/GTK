@@ -5,6 +5,11 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://artur.users.cs.helsinki.fi/GTK/)
 * [Linkki dokumentaatiooni](https://github.com/pundis/GTK/blob/master/doc/dokumentaatio.pdf)
 * [Linkki relaatiotietokantakaavioon](https://github.com/pundis/GTK/blob/master/doc/tsoha relaatiotietokantakaavio.pdf)
+* [Linkki käynnistysohjeisiin](https://github.com/pundis/GTK/blob/master/doc/kaynnistysohje.pdf)
+
+Testaustunnukset: Arttu
+		  Kaakeli1
+
 
 kirjautumissivu: http://artur.users.cs.helsinki.fi/GTK/login
 ratojen listaussivu: http://artur.users.cs.helsinki.fi/GTK/courses
