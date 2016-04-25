@@ -28,3 +28,15 @@ INSERT INTO Hole (course_id, holenumber, par) VALUES (1, 15, 4);
 INSERT INTO Hole (course_id, holenumber, par) VALUES (1, 16, 4);
 INSERT INTO Hole (course_id, holenumber, par) VALUES (1, 17, 4);
 INSERT INTO Hole (course_id, holenumber, par) VALUES (1, 18, 4);
+
+-- LÖFKULLA TESTIDATA --
+
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 1, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 2, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 3, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 4, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 5, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 6, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 7, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 8, 3);
+INSERT INTO Hole (course_id, holenumber, par) VALUES (2, 9, 3);

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Käyttäjän {{user_logged_in.name}} pelatut kierrokset</h1>
+
+  {% if message %}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+  {% endif %}
+  <p></p>
+  <p>
+    <a href="{{base_path}}/playedcourses/new" class="btn btn-success">Lisää pelattu kierros</a>
+  </p>
+
+{% endblock %}

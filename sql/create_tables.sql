@@ -32,5 +32,6 @@ CREATE TABLE PlayedHole(
   course_id INTEGER REFERENCES Course(id),
   playedcourse_id INTEGER REFERENCES PlayedCourse(id),
   golfer_id SERIAL REFERENCES Golfer(id),
+  holenumber INTEGER,
   result INTEGER 
 );

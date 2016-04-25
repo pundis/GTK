@@ -28,7 +28,7 @@
 
   	public function authenticate($name, $password) {
 	  $query = DB::connection()->prepare('SELECT * FROM Golfer WHERE name = :name AND password = :password LIMIT 1');
-	  $query->execute(array('id' => $id, 'name' => $name, 'password' => $password));
+	  $query->execute(array('name' => $name, 'password' => $password));
 	  $row = $query->fetch();
 
       if ($row) {

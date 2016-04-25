@@ -4,6 +4,7 @@
 
   	public static function index(){
       $courses = Course::all();
+      $user_logged_in = self::get_user_logged_in();
       View::make('course/index.html', array('courses' => $courses));
     }
 
@@ -34,11 +35,14 @@
     public static function show($id){
     	$course = Course::find($id);
       $holes = Hole::findByCourseId($id);
+      $user_logged_in = self::get_user_logged_in();
     	
     	View::make('course/show.html', array('course' => $course, 'holes' => $holes));
     }
 
     public static function edit($id){
+      self::check_logged_in();
+
       $course = Course::find($id);
       View::make('course/edit.html', array('attributes' => $course));
     }

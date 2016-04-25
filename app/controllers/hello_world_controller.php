@@ -4,6 +4,7 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
+      $user_logged_in = self::get_user_logged_in();
    	  View::make('index.html');
     }
 
