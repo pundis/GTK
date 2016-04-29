@@ -29,7 +29,9 @@
     }
 
     public static function create() {
-      View::make('course/new.html');
+      self::check_logged_in();
+
+      View::make('course/new.html'); 
     }
 
     public static function show($id){
@@ -72,6 +74,7 @@
     }
 
     public static function destroy($id){
+      self::check_logged_in();
       // Alustetaan Kenttä-olio annetulla id:llä
       $course = new Course(array('id' => $id));
       // Kutsutaan Kenttä-malliluokan metodia destroy, joka poistaa pelin sen id:llä

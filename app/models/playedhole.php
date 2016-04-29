@@ -9,18 +9,12 @@
       $this->validators = array('validatePlayedHoles');
     }
 
-  	public function validatePlayedHoles() {
-	  $error = array();
-	  if (!ctype_digit(strval($this->holes))) {
-	    $error[] = "Reikiä oltava numero";
-        return $error;  
-   		}
-	  if ($this->holes == 9 || $this->holes == 18) {
-	    return $error;
-	  }
+    public function save() {
+      $query = DB::connection()->prepare('INSERT INTO PlayedHole (playedcourse_id, golfer_id, result, holenumber) VALUES (:playedcourse_id, :golfer_id, :result, :holenumber) RETURNING id');
+      $query->execute(array('playedcourse_id' => $this->playedcourse_id, 'golfer_id' => $this->golfer_id, 'result' => $this->result, 'holenumber' => $this->holenumber));
+      $row = $query->fetch();
+      $this->id = $row['id'];
+    }
 
-	  $error[] = "Reikiä oltava 9 tai 18";
-	    
-	  return $error;
-	}
+
   }

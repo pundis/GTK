@@ -23,7 +23,6 @@ CREATE TABLE PlayedCourse(
   id SERIAL PRIMARY KEY,
   golfer_id SERIAL REFERENCES Golfer(id),
   course_id INTEGER REFERENCES Course(id),
-  played Date,
   result INTEGER
 );
 

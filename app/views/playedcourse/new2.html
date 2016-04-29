@@ -15,7 +15,7 @@
     <div class="col-xs-2">
       {% for hole in holes %}
       <label>{{hole.holenumber}}, Par: {{hole.par}}</label>
-        <input type="text" name="{{hole.holenumber}}" class="form-control">
+        <input type="number" max="15" min="1" name="{{hole.holenumber}}" class="form-control" required>
       {% endfor %}
       <input name="course_id" value="{{course.id}}" readonly>
     </div>

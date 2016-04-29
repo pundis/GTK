@@ -1,5 +1,9 @@
 <?php
 
-  class PlayedHole extends BaseController {
+  class PlayedHoleController extends BaseController {
   	
+  	public static function findByPlayedCourseId($id) {
+  		
+  	}
+
   }
