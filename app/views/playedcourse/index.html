@@ -7,9 +7,31 @@
     {{message}}
   </div>
   {% endif %}
-  <p></p>
+
   <p>
     <a href="{{base_path}}/playedcourses/new" class="btn btn-success">Lisää pelattu kierros</a>
   </p>
+
+  <table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Kenttä</th>
+      <th>Reiät</th>
+      <th>Tulos</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for course in playedcourses %}
+      <tr>
+        <td><a href="{{base_path}}/playedcourses/{{playedcourse.id}}">{{course.course_name}}</td>
+        <td>{{course.course_holes}}</td>
+        <td>{{course.result}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 
 {% endblock %}

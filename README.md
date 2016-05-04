@@ -6,6 +6,8 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/pundis/GTK/blob/master/doc/dokumentaatio.pdf)
 * [Linkki relaatiotietokantakaavioon](https://github.com/pundis/GTK/blob/master/doc/tsoha relaatiotietokantakaavio.pdf)
 * [Linkki käynnistysohjeisiin](https://github.com/pundis/GTK/blob/master/doc/kaynnistysohje.pdf)
+* [Linkki Käyttöliittymän ja järjestelmän komponentteihin](https://github.com/pundis/GTK/blob/master/doc/K%C3%A4ytt%C3%B6liittym%C3%A4%20ja%20j%C3%A4rjestelm%C3%A4n%20komponentit)
+* [Järjestelmän yleisrakenne](https://github.com/pundis/GTK/blob/master/doc/J%C3%A4rjestelm%C3%A4n%20yleisrakenne.pdf)
 
 Testaustunnukset: Arttu
 		  Kaakeli1

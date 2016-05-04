@@ -21,6 +21,8 @@ CREATE TABLE Hole(
 
 CREATE TABLE PlayedCourse(
   id SERIAL PRIMARY KEY,
+  course_name varchar(50),
+  course_holes INTEGER,
   golfer_id SERIAL REFERENCES Golfer(id),
   course_id INTEGER REFERENCES Course(id),
   result INTEGER
