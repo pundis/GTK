@@ -68,3 +68,7 @@
   $routes->post('/login', function() {
     UserController::handle_login();
   });
+
+  $routes->get('/playedcourses/:id', function($id) {
+    PlayedCourseController::show($id);
+  });

@@ -16,5 +16,25 @@
       $this->id = $row['id'];
     }
 
+    public function findByPlayedCourseId($id) {
+      $query = DB::connection()->prepare('SELECT * FROM PlayedHole WHERE playedcourse_id = :id ORDER BY holenumber');
+      $query->execute(array('id' => $id));
+      $rows = $query->fetchAll();
+
+      $holes = array();
+
+      foreach($rows as $row){
+          $holes[] = new PlayedHole(array(
+          'id' => $row['id'],
+          'playedcourse_id' => $row['playedcourse_id'],
+          'golfer_id' => $row['golfer_id'],
+          'result' => $row['result'],
+          'holenumber' => $row['holenumber']
+          ));
+      }
+
+      return $holes;
+    }
+
 
   }

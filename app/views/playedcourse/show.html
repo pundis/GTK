@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/forms.html" as forms %}
+
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
+<h1>{{playedcourse.course_name}}</h1>
+<h2>Tulos: {{playedcourse.result}}</h2>
+
+<p>
+  <form method="post" action="{{playedcourse.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">Poista</button>
+  </form>
+  <a href="{{base_path}}/playedcourses/{{course.id}}/edit" class="btn btn-default">Muokkaa</a>
+</p>
+
+<p></p>
+<h2>Reiät: </h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Reikä</th>
+        <th>Lyöntejä</th>
+        <th>Par</th>
+        <th>Erotus</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for hole in holes %}
+      <tr>
+        <td>{{hole.holenumber}}</td>
+        <td>{{playedholes[hole.holenumber - 1].result}}</td>
+        <td>{{hole.par}}</td>
+        <td>{{playedholes[hole.holenumber - 1].result - hole.par}}</a></td>
+      </tr>
+      {% endfor %}  
+    </tbody>
+  </table>
+{% endblock %}

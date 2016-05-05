@@ -9,6 +9,15 @@
       View::make('playedcourse/new.html', array('courses' => $courses));
     }
 
+    public static function show($id) {
+      $playedcourse = PlayedCourse::find($id);
+      $holes = Hole::findByCourseId($playedcourse->course_id);
+      $playedholes = PlayedHole::findByPlayedCourseId($id);
+      
+      View::make('playedcourse/show.html', array('playedcourse' => $playedcourse, 'holes' => $holes, 'playedholes' => $playedholes));
+
+    }
+
     public static function index() {
       self::check_logged_in();
       $user = self::get_user_logged_in();
