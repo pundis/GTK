@@ -17,8 +17,8 @@
       <label>{{hole.holenumber}}, Par: {{hole.par}}</label>
         <input type="number" max="15" min="1" name="{{hole.holenumber}}" class="form-control" required>
       {% endfor %}
-      <input name="course_id" value="{{course.id}}" readonly>
-      <input name="course_name" value="{{course.name}}" readonly>
+      <input type="hidden" name="course_id" value="{{course.id}}">
+      <input type="hidden" name="course_name" value="{{course.name}}">
     </div>
 
 

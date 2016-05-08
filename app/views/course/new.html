@@ -13,7 +13,7 @@
   {% endif %}
 
 
-  <form method="post" action="{{base_path}}/courses">
+  <form method="post" action="{{base_path}}/courses/new">
     <div class="form-group">
       <label>Nimi</label>
       <input type="text" name="name" class="form-control">
@@ -26,7 +26,7 @@
 
     <div class="form-group">
       <label>Reikiä</label>
-      <input type="text" name="holes" class="form-control">
+      <input type="number" name="holes" min="9" max="18" step="9" class="form-control">
     </div>
 
     <div class="form-group">

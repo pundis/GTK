@@ -1,7 +1,23 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    BaseController::index();
+  });
+
+  $routes->post('/courses/new9', function() {
+    CourseController::store();
+  });
+
+  $routes->get('/register', function() {
+    UserController::register();
+  });
+
+  $routes->post('/register', function() {
+    UserController::create();
+  });
+
+  $routes->post('/courses/new18', function() {
+    CourseController::store();
   });
 
   $routes->get('/playedcourses', function() {
@@ -37,8 +53,8 @@
     CourseController::create();
   });
 
-  $routes->post('/courses', function() {
-    CourseController::store();
+  $routes->post('/courses/new', function() {
+    CourseController::create2();
   });
 
   $routes->get('/courses/:id', function($id){

@@ -8,6 +8,25 @@
       parent::__construct($attributes);
     }
 
+    public function save() {
+      $query = DB::connection()->prepare('INSERT INTO Golfer (name, password) VALUES (:name, :password) RETURNING id');
+      $query->execute(array('name' => $this->name, 'password' => $this->password));
+      $row = $query->fetch();
+      $this->id = $row['id'];
+    }
+
+    public function destroy() {
+      $query = DB::connection()->prepare('DELETE From Golfer Where id = :id');
+      $query->execute(array('id' => $this->id));
+      $row = $query->fetch();
+	}
+
+	public function update() {
+      $query =  DB::connection()->prepare('UPDATE Golfer Set (password) = (:password) WHERE id = :id');
+      $query->execute(array('password' => $this->password));
+      $row = $query->fetch();
+	}
+
   	public static function find($id) {
 	  $query = DB::connection()->prepare('SELECT * FROM Golfer WHERE id = :id LIMIT 1');
 	  $query->execute(array('id' => $id));
@@ -39,7 +58,7 @@
 	    	));
 	    return $user;
       } else {
- 	    return $null;
+ 	    return null;
 	  }
   	}
   }

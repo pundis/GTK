@@ -16,6 +16,12 @@
       return null;
     }
 
+    public static function index(){
+      // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
+      $user_logged_in = self::get_user_logged_in();
+      View::make('index.html');
+    }
+
     public static function check_logged_in(){
       if(!isset($_SESSION['user'])){
         Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
