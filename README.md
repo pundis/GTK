@@ -27,3 +27,8 @@ Golftietokannan tarkoitus on tuoda käyttäjälle keskitetty paikka johon taltio
 Sivusto tarjoaa kirjautumistoiminnon, jonka jälkeen kierroksia voidaan lisätä pelatulle kentälle.
 Mikäli tietokannasta ei vielä löydy pelattua golf-kenttää, voi käyttäjä lisätä sen vaivatta tietokantaan ja syöttää tulos pelatulla kentällä.
 Kun tuloksia on syötetty tarpeeksi voi käyttäjä seurata omaa kehitystään tästä keskitetystä kierroskannasta.
+
+
+## Kommentti kurssin loppuun
+
+Kahta CRUD-nelikkoa en toteuttanut taulujen välisten riippuvuuksien takia. Työtunteja niiden lisäykseen olisi kulunut kohtuuttoman paljon enkä usko että malliaiheissa taulujen välillä samanlaista tilanteita tulisi.
