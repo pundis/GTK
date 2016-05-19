@@ -4,6 +4,18 @@
     BaseController::index();
   });
 
+  $routes->get('/user/:id/edit', function($id) {
+    UserController::edit($id);
+  });
+
+  $routes->post('/user/:id/edit', function($id) {
+    UserController::update($id);
+  });
+
+  $routes->post('/user/:id/destroy', function($id) {
+    UserController::destroy($id);
+  });
+
   $routes->post('/courses/new9', function() {
     CourseController::store();
   });

@@ -6,6 +6,7 @@
 
     public function __construct($attributes){
       parent::__construct($attributes);
+      $this->validators = array('validatePassword');
     }
 
     public function save() {
@@ -23,7 +24,7 @@
 
 	public function update() {
       $query =  DB::connection()->prepare('UPDATE Golfer Set (password) = (:password) WHERE id = :id');
-      $query->execute(array('password' => $this->password));
+      $query->execute(array('id' => $this->id, 'password' => $this->password));
       $row = $query->fetch();
 	}
 
@@ -61,4 +62,12 @@
  	    return null;
 	  }
   	}
-  }
+
+	public function validatePassword() {
+	  $error = array();
+	  if (strlen($this->password) < 3) {
+	    $error = array("Salasanan pituus oltava vähintään 3 kirjainta");
+	  }
+	  return $error;
+	}
+}

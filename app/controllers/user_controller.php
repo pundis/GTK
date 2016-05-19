@@ -3,11 +3,18 @@
   class UserController extends BaseController{
 
     public static function login(){
-        View::make('user/login.html');
+      View::make('user/login.html');
     }
 
     public static function register() {
       View::make('user/register.html');
+    }
+
+    public static function edit($id){
+      self::check_logged_in();
+
+      $user = self::get_user_logged_in();
+      View::make('user/edit.html', array('attributes' => $user));
     }
 
     public static function create() {
@@ -46,36 +53,45 @@
 
     public static function destroy() {
       self::check_logged_in();
-      // Alustetaan Kenttä-olio annetulla id:llä
-      $user = user_logged_in();
-      // Kutsutaan Kenttä-malliluokan metodia destroy, joka poistaa pelin sen id:llä
+
+      $user = self::get_user_logged_in();
+
+      $playedcourses = PlayedCourse::findByUserId($user->id);
+      
+      foreach ($playedcourses as $pcourse) {
+      $pholes = PlayedHole::findByPlayedCourseId($pcourse->id);
+        foreach ($pholes as $phole) {
+          $phole->destroy();
+        }
+        $pcourse->destroy();
+      }
+
       $user->destroy();
 
       // Ohjataan käyttäjä kenttien listaussivulle ilmoituksen kera
       Redirect::to('/', array('message' => 'Käyttäjä on poistettu onnistuneesti'));
     }
 
-      public static function update($id){
-        $params = $_POST;
+    public static function update($id){
+      $params = $_POST;
 
-        $attributes = array(
-          'id' => $id,
-          'name' => $params['name'],
-          'city' => $params['city'],
-          'holes' => $params['holes']
-          );
+      $attributes = array(
+        'id' => $id,
+        'name' => $params['name'],
+        'password' => $params['password']
+        );
 
-        // Alustetaan Kenttä-olio käyttäjän syöttämillä tiedoilla
-        $course = new Course($attributes);
-        $errors = $course->errors();
+      // Alustetaan Kenttä-olio käyttäjän syöttämillä tiedoilla
+      $user = new User($attributes);  
+      $errors = $user->errors();
 
-        if(count($errors) > 0){
-          View::make('course/edit.html', array('errors' => $errors, 'attributes' => $attributes));
-        }else{
-          // Kutsutaan alustetun olion update-metodia, joka päivittää pelin tiedot tietokannassa
-          $course->update();
+      if(count($errors) > 0){
+        View::make('user/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+      }else{
+        // Kutsutaan alustetun olion update-metodia, joka päivittää pelin tiedot tietokannassa
+        $user->update();
 
-          Redirect::to('/courses' . $course->id, array('message' => 'Kenttää on muokattu onnistuneesti!'));
-        }
+        Redirect::to('/user/' . $user->id, array('message' => 'Käyttäjää on muokattu onnistuneesti!'));
       }
+    }
   }

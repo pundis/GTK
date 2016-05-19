@@ -15,6 +15,12 @@
       $this->id = $row['id'];
     }
 
+    public function destroy(){
+      $query = DB::connection()->prepare('DELETE From Hole Where id = :id');
+      $query->execute(array('id' => $this->id));
+      $row = $query->fetch();
+    }
+
     public static function findByCourseId($id){
   		$query = DB::connection()->prepare('SELECT * FROM Hole WHERE course_id = :id ORDER BY holenumber');
       $query->execute(array('id' => $id));

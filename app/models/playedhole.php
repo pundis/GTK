@@ -16,6 +16,12 @@
       $this->id = $row['id'];
     }
 
+    public function destroy() {
+      $query = DB::connection()->prepare('DELETE From PlayedHole Where id = :id');
+      $query->execute(array('id' => $this->id));
+      $row = $query->fetch();
+    }
+
     public function findByPlayedCourseId($id) {
       $query = DB::connection()->prepare('SELECT * FROM PlayedHole WHERE playedcourse_id = :id ORDER BY holenumber');
       $query->execute(array('id' => $id));

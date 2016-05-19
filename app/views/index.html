@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
 
   <div class="panel panel-default">
     <div class="panel-heading"><h1>Keskeinen golftietokantasi</h1></div>

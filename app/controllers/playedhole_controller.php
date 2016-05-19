@@ -6,4 +6,8 @@
   		
   	}
 
+  	public static function destroy() {
+  		
+  	}
+
   }

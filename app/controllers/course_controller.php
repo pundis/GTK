@@ -8,6 +8,53 @@
       View::make('course/index.html', array('courses' => $courses));
     }
 
+
+    public static function destroy($id){
+      self::check_logged_in();
+      // Alustetaan Kenttä-olio annetulla id:llä
+      $course = new Course(array('id' => $id));
+      $playedcourses = PlayedCourse::findByCourseId($id);
+
+      foreach ($playedcourses as $pcourse) {
+        $pholes = PlayedHole::findByPlayedCourseId($pcourse->id);
+        foreach ($pholes as $phole) {
+          $phole->destroy();
+        }
+        $pcourse->destroy();
+      }
+      // Kutsutaan Kenttä-malliluokan metodia destroy
+      $holes = Hole::findByCourseId($id);
+      foreach ($holes as $hole) {
+        $hole->destroy();
+      }
+
+      $course->destroy();
+
+      // Ohjataan käyttäjä kenttien listaussivulle ilmoituksen kera
+      Redirect::to('/courses', array('message' => 'Kenttä on poistettu onnistuneesti'));
+    }
+
+
+    public static function update($id){
+      $params = $_POST;
+      $attributes = array(
+        'id' => $id,
+        'name' => $params['name'],
+        'city' => $params['city'],
+        'holes' => $params['holes']
+        );
+      // Alustetaan Kenttä-olio käyttäjän syöttämillä tiedoilla
+      $course = new Course($attributes);
+      $errors = $course->errors();
+      if(count($errors) > 0){
+        View::make('course/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+      }else{
+        // Kutsutaan alustetun olion update-metodia, joka päivittää pelin tiedot tietokannassa
+        $course->update();
+        Redirect::to('/courses/' . $course->id, array('message' => 'Kenttää on muokattu onnistuneesti!'));
+      }
+    }
+
     public static function store(){
 
       $params = $_POST;
